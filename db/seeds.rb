@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-cat_list = [
+cat_list= [
   {
     name: "Jasper",
     breed: "Japanese Bobtail",
@@ -71,3 +71,13 @@ dog_list = [
     img_url: "https://www.purina.com/sites/g/files/auxxlc196/files/styles/kraken_generic_max_width_240/public/HERDING_Old-English-Sheepdog.jpg?itok=Kei2kK-L",
   },
 ]
+
+cat_list.map {|catValue|
+  Cat.create(catValue)}
+
+p "Created #{Cat.count} cats"
+
+dog_list.map {|dogValue|
+  Dog.create(dogValue)}
+
+p "Created #{Dog.count} dogs"

@@ -1,32 +1,35 @@
-import React, { useState } from 'react'
-import Layout from '../../Layouts/Layout';
+import React, { useState } from "react";
+import Layout from "../../Layouts/Layout";
 
 export default function CatCreate(props) {
   const [formData, setFormData] = useState({
     name: "",
     img_url: "",
-    breed: ""
+    breed: "",
   });
   const { name, img_url, breed } = formData;
   const { createCat } = props;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prevState => ({
+    setFormData((prevState) => ({
       ...prevState,
-      [name]: value
+      [name]: value,
     }));
-  }
+  };
 
   return (
     <Layout>
       <div className="form-container">
-        <form onSubmit={(e) => {
-          e.preventDefault()
-          createCat(formData);
-        }}>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            createCat(formData);
+          }}
+        >
           <h3>Create a Cat</h3>
-          <label>Name:
+          <label>
+            Name:
             <input
               type="text"
               name="name"
@@ -34,7 +37,8 @@ export default function CatCreate(props) {
               onChange={handleChange}
             />
           </label>
-          <label>Image Url:
+          <label>
+            Image Url:
             <input
               type="text"
               name="img_url"
@@ -42,7 +46,8 @@ export default function CatCreate(props) {
               onChange={handleChange}
             />
           </label>
-          <label>Breed:
+          <label>
+            Breed:
             <input
               type="text"
               name="breed"
@@ -54,5 +59,5 @@ export default function CatCreate(props) {
         </form>
       </div>
     </Layout>
-  )
+  );
 }

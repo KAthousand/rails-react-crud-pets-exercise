@@ -1,25 +1,30 @@
-import React from 'react'
-import Layout from '../../Layouts/Layout'
+import React from "react";
+import Layout from "../../Layouts/Layout";
+import { Link } from "react-router-dom";
+import Card from "../../components/Card/Card";
 
-export default function Dogs() {
+export default function Dogs(props) {
   // deconstruct the dogs from props
-  
+  const { allDogs } = props;
+
   return (
     <Layout>
       <div className="card-list">
-        {/* map through all dogs */.map(dog => (
-          <React.Fragment key={/* use the dog id for the key*/}>
-            <Link to={`/cats/${/*link to the individual dog id */}`}>
+        {allDogs.map((dog) => (
+          <React.Fragment key={dog.id}>
+            <Link to={`/dogs/${dog.id}`}>
               <Card
-                title={/* pass the dog's name as the title*/}
-                image={/* pass the dog's image */}
-                description={/* pass the dogs breed as the description */}
+                title={dog.name}
+                image={dog.img_url}
+                description={dog.breed}
               />
             </Link>
           </React.Fragment>
         ))}
       </div>
-      <Link to="/dogs/new"><button>Adopt a dog</button></Link>
+      <Link to="/dogs/new">
+        <button>Adopt a dog</button>
+      </Link>
     </Layout>
-  )
+  );
 }
